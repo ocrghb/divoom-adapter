@@ -1,5 +1,6 @@
-# Python caches
+# Python cache & compiled files
 __pycache__/
+*.py[cod]
 
 # Windows image file caches
 Thumbs.db
