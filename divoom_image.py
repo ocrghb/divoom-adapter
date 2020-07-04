@@ -188,7 +188,8 @@ def draw_text_to_image(text, color=BMP_RED, size=(40,10)):
 	'''Draws the string in given color to an image and returns this iamge'''
 	im = create_default_image(size)
 	draw = ImageDraw.Draw(im)
-	fn = ImageFont.load(os.path.join(os.path.dirname(__file__),'fonts/slkscr.pil'))
+	# fn = ImageFont.load(os.path.join(os.path.dirname(__file__),'fonts/slkscr.pil'))
+	fn = ImageFont.truetype(os.path.join(os.path.dirname(__file__),'fonts/DejaVuSans.ttf'))
 	draw.text((0,0), text, font=fn, fill=color)
 	del draw
 	return im
