@@ -22,10 +22,13 @@ def test():
 	
 	if float(data["priceChange"]) < 0:
 		arrow = u"\u2193"
+		color = divoom_image.BMP_RED
 	elif float(data["priceChange"]) == 0:
-		arrow = u"\u2194"	
+		arrow = u"\u2194"
+		color = divoom_image.BMP_BLUE
 	else:
 		arrow = u"\u2191"
+		color = divoom_image.BMP_GREEN
 	
 	
 	TEXT = arrow+str(int(round(float(data["lastPrice"]))))
