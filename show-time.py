@@ -8,7 +8,7 @@ if len(sys.argv) != 2:
 	sys.exit("please provide the Bluetooth device address")
 
 # create time
-hour12 = time.strftime('%I')
+hour12 = time.strftime('%H')
 minute = time.strftime('%M')
 second = time.strftime('%S')
 
@@ -21,5 +21,5 @@ print("setting time to "  + hour12 + ":" + minute + ":" + second)
 dev.send(thing.create_set_time_package(hour12, minute, second))
 print("showing time")
 dev.send(thing.create_time_package())
-time.sleep(5)
+time.sleep(10)
 dev.disconnect()
