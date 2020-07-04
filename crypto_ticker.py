@@ -14,9 +14,21 @@ import urllib, json
 
 def test():
 
-	json_url = urllib.urlopen("https://www.binance.com/api/v3/ticker/price?symbol=BTCUSDT")
+	SYMBOL = "BTCUSDT"
+
+	json_url = urllib.urlopen("https://www.binance.com/api/v3/ticker/24hr?symbol="+SYMBOL)
 	data = json.loads(json_url.read())
-	TEXT = u"\u2191 "+str(int(round(float(data["price"]))))
+	
+	
+	if float(data["priceChange"]) < 0:
+		arrow = u"\u2193"
+	elif float(data["priceChange"]) == 0:
+		arrow = u"\u2194"	
+	else:
+		arrow = u"\u2191"
+	
+	
+	TEXT = arrow+str(int(round(float(data["lastPrice"]))))
 	
 	
 	img = divoom_image.draw_text_to_image(text=TEXT, color=divoom_image.BMP_YELLOW, size=(70, 10))
