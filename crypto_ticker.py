@@ -14,6 +14,8 @@ import urllib, json
 
 def test():
 
+	color = divoom_image.BMP_BLUE
+
 	SYMBOL = "BTCUSDT"
 
 	json_url = urllib.urlopen("https://www.binance.com/api/v3/ticker/24hr?symbol="+SYMBOL)
@@ -25,7 +27,6 @@ def test():
 		color = divoom_image.BMP_RED
 	elif float(data["priceChange"]) == 0:
 		arrow = u"\u2194"
-		color = divoom_image.BMP_BLUE
 	else:
 		arrow = u"\u2191"
 		color = divoom_image.BMP_GREEN
@@ -34,7 +35,7 @@ def test():
 	TEXT = arrow+str(int(round(float(data["lastPrice"]))))
 	
 	
-	img = divoom_image.draw_text_to_image(text=TEXT, color=divoom_image.BMP_YELLOW, size=(70, 10))
+	img = divoom_image.draw_text_to_image(text=TEXT, color=color, size=(70, 10))
 	sliced_images = divoom_image.horizontal_slices(img)
 	# create divoom packages
 	raw_data_packages = []
